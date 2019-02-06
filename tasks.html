@@ -6,8 +6,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
-          integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
 </head>
 <body class="bg-light">
 <div class="container" id="codelab">
@@ -16,112 +15,128 @@
             <div class="row">
                 <div class="col">
                     <div class="input-group mb-3">
-                        <input v-model.trim="text" type="text" class="form-control" placeholder="Enter the task">
+                        <input v-model.trim="text" type="text" class="form-control" placeholder="Enter task...">
                         <div class="input-group-append">
                             <button @click="addTask" class="btn btn-outline-secondary" type="button">Add</button>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <div class="row" v-if="completed.length > 0">
                 <div class="col">
-                    <h4 v-if="showMessage" :style="{'font-size': 19}" :class="{someclass: active}">Hello,i'm
-                        The Message</h4>
-                    <h4 v-else class="text-center">The "showMessage" is False</h4>
+                    <h4>Completed:</h4>
                 </div>
             </div>
             <div class="row">
                 <div class="col">
                     <ul class="list-group">
-                        <li v-for="(task,index) in completed"
-                            class="list-group-item d-flex align-items-center justify-content-between">
-                            <span>#{{index+1}} {{ task.text }} - {{ task.completed ? "Completed" : "Not Completed" }}</span>
-                            <div class="btn-group btn-group-sm">
-                                <button @click="task.completed = !task.completed" class="btn btn-outline-secondary"
-                                        type="button">Toggle
-                                </button>
-                                <button @click="deleteTask(index)" class="btn btn-outline-secondary" type="button">
-                                    Delete
-                                </button>
-                            </div>
+                        <li v-for="(task,index) in completed" class="list-group-item ">
+                            <div class="row justify-content-between">
 
+                                <div class="col-auto">
+                                    <span>{{task.text}}</span>
+                                </div>
+
+                                <div class="col-auto">
+                                    <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+                                        <button @click="deleteTask(index)" type="button" class="btn btn-danger">Remove
+                                        </button>
+                                        <button @click="task.completed = !task.completed" type="button"
+                                                class="btn btn-info">Toggle
+                                        </button>
+                                    </div>
+                                </div>
+
+
+                            </div>
                         </li>
+
                     </ul>
                 </div>
             </div>
-            <div class="row">
+
+
+            <div class="row" v-if="uncompleted.length > 0">
                 <div class="col">
-                    <h4 class="text-center">Uncompleted Tasks</h4>
+                    <h4>Uncompleted:</h4>
                 </div>
             </div>
             <div class="row">
                 <div class="col">
                     <ul class="list-group">
-                        <li v-for="(task,index) in uncompleted"
-                            class="list-group-item d-flex align-items-center justify-content-between">
-                            <span>#{{index+1}} {{ task.text }} - {{ task.completed ? "Completed" : "Not Completed" }}</span>
-                            <div class="btn-group btn-group-sm">
-                                <button @click="task.completed = !task.completed" class="btn btn-outline-secondary"
-                                        type="button">Toggle
-                                </button>
-                                <button @click="deleteTask(index)" class="btn btn-outline-secondary" type="button">
-                                    Delete
-                                </button>
-                            </div>
+                        <li v-for="(task,index) in uncompleted" class="list-group-item ">
+                            <div class="row justify-content-between">
 
+                                <div class="col-auto">
+                                    <span>{{task.text}}</span>
+                                </div>
+
+                                <div class="col-auto">
+                                    <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+                                        <button @click="deleteTask(index)" type="button" class="btn btn-danger">Remove
+                                        </button>
+                                        <button @click="task.completed = !task.completed" type="button"
+                                                class="btn btn-info">Toggle
+                                        </button>
+                                    </div>
+                                </div>
+
+
+                            </div>
                         </li>
+
                     </ul>
                 </div>
             </div>
+
+
         </div>
     </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
 <script>
-    let vue = new Vue({
+    vue = new Vue({
         el: "#codelab",
         data: {
-            showMessage: false,
-            active: false,
             text: "",
-            tasks: [],
+            tasks: []
         },
         methods: {
             addTask: function () {
-
-                if (this.text == "")
+                if (this.text === "")
                     return;
-
 
                 let newTask = {
                     text: this.text,
-                    completed: false
+                    completed: false,
                 };
 
                 this.tasks.push(newTask);
                 this.text = "";
             },
-            deleteTask(index) {
+            deleteTask: function (index) {
                 this.tasks.splice(index, 1);
             }
         },
         computed: {
-            completed(){
-                return this.tasks.filter(function(task){
+            completed() {
+                // return this.tasks.filter(task => task.completed)
+                // same as:
+                return this.tasks.filter(function (task) {
                     return task.completed;
                 })
+
             },
             uncompleted(){
-                return this.tasks.filter(function(task){
+                // return this.tasks.filter(task => !task.completed)
+                // same as:
+                return this.tasks.filter(function (task) {
                     return !task.completed;
                 })
             }
         }
-
     })
 </script>
-
-
 </body>
 </html>

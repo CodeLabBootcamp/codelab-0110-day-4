@@ -26,7 +26,7 @@
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="HTML" value="2461" />
+          <entry key="HTML" value="3574" />
         </counts>
       </usages-collector>
     </session>
@@ -36,15 +36,17 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tasks.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="540">
-              <caret line="53" column="42" selection-start-line="53" selection-start-column="42" selection-end-line="53" selection-end-column="42" />
+            <state relative-caret-position="495">
+              <caret line="63" column="29" lean-forward="true" selection-start-line="63" selection-start-column="29" selection-end-line="63" selection-end-column="29" />
               <folding>
-                <element signature="e#1895#2023#0" />
-                <element signature="e#2831#3307#0" />
-                <element signature="e#3364#3365#0" expanded="true" />
-                <element signature="e#3425#3426#0" expanded="true" />
-                <element signature="e#3511#3512#0" expanded="true" />
-                <element signature="e#3572#3573#0" expanded="true" />
+                <element signature="n#div#2;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+                <element signature="e#2337#2369#0" />
+                <element signature="e#2696#2697#0" expanded="true" />
+                <element signature="e#2731#2732#0" expanded="true" />
+                <element signature="e#4532#4533#0" expanded="true" />
+                <element signature="e#4593#4594#0" expanded="true" />
+                <element signature="e#4898#4899#0" expanded="true" />
+                <element signature="e#4959#4960#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -132,12 +134,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1549436898158</updated>
-      <workItem from="1549436900224" duration="8930000" />
+      <workItem from="1549436900224" duration="10946000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8930000" />
+    <option name="totallyTimeSpent" value="10946000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1920" height="976" extended-state="0" />
@@ -189,15 +191,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tasks.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="53" column="42" selection-start-line="53" selection-start-column="42" selection-end-line="53" selection-end-column="42" />
+        <state relative-caret-position="495">
+          <caret line="63" column="29" lean-forward="true" selection-start-line="63" selection-start-column="29" selection-end-line="63" selection-end-column="29" />
           <folding>
-            <element signature="e#1895#2023#0" />
-            <element signature="e#2831#3307#0" />
-            <element signature="e#3364#3365#0" expanded="true" />
-            <element signature="e#3425#3426#0" expanded="true" />
-            <element signature="e#3511#3512#0" expanded="true" />
-            <element signature="e#3572#3573#0" expanded="true" />
+            <element signature="n#div#2;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="e#2337#2369#0" />
+            <element signature="e#2696#2697#0" expanded="true" />
+            <element signature="e#2731#2732#0" expanded="true" />
+            <element signature="e#4532#4533#0" expanded="true" />
+            <element signature="e#4593#4594#0" expanded="true" />
+            <element signature="e#4898#4899#0" expanded="true" />
+            <element signature="e#4959#4960#0" expanded="true" />
           </folding>
         </state>
       </provider>
