@@ -10,31 +10,65 @@
           integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 </head>
 <body class="bg-light">
-<div class="container">
+<div class="container" id="codelab">
     <div class="row justify-content-center mt-5">
         <div class="col-md-5">
             <div class="row">
                 <div class="col">
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Enter the task">
+                        <input v-model.trim="text" type="text" class="form-control" placeholder="Enter the task">
                         <div class="input-group-append">
-                            <button class="btn btn-outline-secondary" type="button">Add</button>
+                            <button @click="addTask" class="btn btn-outline-secondary" type="button">Add</button>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col">
-                    <div class="card">
-                        <div class="card-body">
-
-                        </div>
-                    </div>
+                    <h4  v-if="showMessage" :class="{someclass: active}" class="text-center">Hello,i'm The Message</h4>
+                    <h4 v-else class="text-center">The "showMessage" is False</h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <ul class="list-group">
+                        <li v-for="task in tasks"  class="list-group-item">{{ task.text }}</li>
+                    </ul>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<script>
+    let vue = new Vue({
+        el: "#codelab",
+        data: {
+            showMessage: false,
+            active: false,
+            text: "",
+            tasks: [],
+        },
+        methods: {
+            addTask: function () {
+
+                if (this.text == "")
+                    return;
+
+
+                let newTask = {
+                    text: this.text,
+                    completed: false
+                };
+
+                this.tasks.push(newTask);
+                this.text = "";
+            }
+        }
+    })
+</script>
+
 
 </body>
 </html>
