@@ -7,6 +7,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+    <style>
+
+    </style>
 </head>
 <body class="bg-light">
 <div class="container" id="codelab">
@@ -30,7 +33,8 @@
             <div class="row mt-4">
                 <div class="col">
                     <div class="input-group mb-3">
-                        <input @keyup.enter="addTask" v-model.trim="text" type="text" class="form-control" placeholder="Enter task...">
+                        <input @keyup.enter="addTask" v-model.trim="text" type="text" class="form-control"
+                               placeholder="Enter task...">
                         <div class="input-group-append">
                             <button @click="addTask" class="btn btn-outline-secondary" type="button">Add</button>
                         </div>
@@ -76,6 +80,8 @@
                     <h4>Uncompleted:</h4>
                 </div>
             </div>
+
+
             <div class="row">
                 <div class="col">
                     <ul class="list-group">
@@ -88,7 +94,7 @@
 
                                 <div class="col-auto">
                                     <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-                                        <button @click="deleteTask(index)" type="button" class="btn btn-danger">Remove
+                                        <button @click="deleteTask(task)" type="button" class="btn btn-danger">Remove
                                         </button>
                                         <button @click="task.completed = !task.completed" type="button"
                                                 class="btn btn-info">Toggle
@@ -134,8 +140,13 @@
                 this.tasks.push(newTask);
                 this.text = "";
             },
-            deleteTask: function (index) {
-                this.tasks.splice(index, 1);
+            deleteTask: function (task) {
+                let sure = confirm(`Are you sure you want to delete the task ${task.text}?`);
+
+                if (sure){
+                    let index = this.tasks.indexOf(task);
+                    this.tasks.splice(index, 1);
+                }
             }
         },
         computed: {
@@ -154,7 +165,16 @@
                     return !task.completed;
                 })
             }
-        }
+        },
+
+        mounted() {
+            console.log("Vue is mounted now!");
+        },
+        updated() {
+            console.log("Updated!")
+        },
+
+
     })
 </script>
 </body>
