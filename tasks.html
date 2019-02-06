@@ -25,14 +25,26 @@
             </div>
             <div class="row">
                 <div class="col">
-                    <h4  v-if="showMessage" :class="{someclass: active}" class="text-center">Hello,i'm The Message</h4>
+                    <h4 v-if="showMessage" :class="{someclass: active}" class="text-center">Hello,i'm The Message</h4>
                     <h4 v-else class="text-center">The "showMessage" is False</h4>
                 </div>
             </div>
             <div class="row">
                 <div class="col">
                     <ul class="list-group">
-                        <li v-for="task in tasks"  class="list-group-item">{{ task.text }}</li>
+                        <li v-for="(task,index) in tasks"
+                            class="list-group-item d-flex align-items-center justify-content-between">
+                            <span>#{{index+1}} {{ task.text }} - {{ task.completed ? "Completed" : "Not Completed" }}</span>
+                            <div class="btn-group btn-group-sm">
+                                <button @click="task.completed = !task.completed" class="btn btn-outline-secondary"
+                                        type="button">Toggle
+                                </button>
+                                <button @click="deleteTask(index)" class="btn btn-outline-secondary" type="button">
+                                    Delete
+                                </button>
+                            </div>
+
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -64,6 +76,9 @@
 
                 this.tasks.push(newTask);
                 this.text = "";
+            },
+            deleteTask(index) {
+                this.tasks.splice(index, 1);
             }
         }
     })
